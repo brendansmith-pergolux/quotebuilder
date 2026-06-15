@@ -65,7 +65,7 @@ export default function App() {
   const lbl: React.CSSProperties = { fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTE, fontWeight: 700 };
 
   return (
-    <div style={{ color: INK, background: WASH, minHeight: '100vh' }}>
+    <div className="pgx-app" style={{ color: INK, background: WASH, minHeight: '100vh' }}>
       <style>{`
         input:focus, textarea:focus, select:focus { outline: none; }
         .pgx-grid { display: grid; grid-template-columns: 1.6fr 1.1fr 1fr 64px 1.1fr 1.1fr 36px; align-items: center; }
@@ -75,8 +75,11 @@ export default function App() {
         .pgx-row:hover .pgx-del { opacity: 1; }
         @media print {
           .no-print { display: none !important; }
-          .pgx-sheet { box-shadow: none !important; border: none !important; }
+          .pgx-app { min-height: 0 !important; background: #fff !important; }
+          .pgx-container { margin: 0 !important; padding: 0 !important; max-width: none !important; }
+          .pgx-sheet { box-shadow: none !important; border: none !important; border-radius: 0 !important; overflow: visible !important; }
           .print-head { display: flex !important; }
+          .pgx-disclaimer { margin-top: 12px !important; }
         }
         .print-head { display: none; }
       `}</style>
@@ -92,7 +95,7 @@ export default function App() {
         </button>
       </div>
 
-      <div style={{ maxWidth: 1080, margin: '24px auto', padding: '0 20px 60px' }}>
+      <div className="pgx-container" style={{ maxWidth: 1080, margin: '24px auto', padding: '0 20px 60px' }}>
         <div className="pgx-sheet" style={{ background: PAPER, border: `1px solid ${LINE}`, borderRadius: 10, boxShadow: '0 1px 3px rgba(0,0,0,0.04)', overflow: 'hidden' }}>
 
           {/* print-only letterhead */}
@@ -215,7 +218,7 @@ export default function App() {
         </div>
 
         {/* estimation disclaimer band */}
-        <div style={{ textAlign: 'center', marginTop: 20, padding: '14px 20px', fontSize: 12.5, color: MUTE, lineHeight: 1.5 }}>
+        <div className="pgx-disclaimer" style={{ textAlign: 'center', marginTop: 20, padding: '14px 20px', fontSize: 12.5, color: MUTE, lineHeight: 1.5 }}>
           Note — this is only for quick estimation purposes; actual quotes and orders must be created on PERGOLUX's website.{' '}
           <a href="https://account.pergoluxshop.com/" target="_blank" rel="noopener noreferrer"
             style={{ color: GREEN, fontWeight: 700, textDecoration: 'none' }}>
